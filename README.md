@@ -19,9 +19,8 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
     dependencies {
-        implementation 'com.github.jamiehiggins:ExoPlayerFilter:0.3.3'
-        implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
-        implementation 'com.google.android.exoplayer:exoplayer-core:2.17.1'
+        implementation 'com.github.MasayukiSuda:ExoPlayerFilter:v0.2.6'
+        implementation 'com.google.android.exoplayer:exoplayer-core:2.14.0'
     }
 ```
 This library depends ExoPlayer core 2.14.0
