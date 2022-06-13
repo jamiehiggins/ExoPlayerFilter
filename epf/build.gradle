@@ -2,13 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
+
     compileSdkVersion COMPILE_SDK_VERSION as int
 
     defaultConfig {
         minSdkVersion COMPILE_MIN_SDK_VERSION as int
         targetSdkVersion COMPILE_SDK_VERSION as int
-        versionCode VERSION_CODE as int
-        versionName VERSION_NAME
     }
     buildTypes {
         release {
@@ -23,6 +22,26 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    namespace = 'com.daasuu'
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+
+        /*publications {
+            release(MavenPublication) {
+                groupId = 'com.daasuu'
+                artifactId = 'epf'
+                version = '1.0'
+
+                afterEvaluate {
+                    from components.release
+                }
+            }
+        }*/
     }
 }
 

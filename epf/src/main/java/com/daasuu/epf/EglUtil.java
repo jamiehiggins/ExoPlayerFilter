@@ -64,11 +64,12 @@ public class EglUtil {
     }
 
     public static void checkEglError(String operation) {
-        if (!BuildConfig.DEBUG) return;
+        return;
+        /*if (!BuildConfig.DEBUG) return;
         int error;
         while ((error = GLES20.glGetError()) != GLES20.GL_NO_ERROR) {
             throw new RuntimeException(operation + ": glError " + error);
-        }
+        }*/
     }
 
     public static void setupSampler(final int target, final int mag, final int min) {
