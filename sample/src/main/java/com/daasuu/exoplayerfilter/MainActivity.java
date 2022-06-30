@@ -13,8 +13,8 @@ import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.daasuu.epf.EPlayerView;
+import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
@@ -27,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private EPlayerView ePlayerView;
-    private SimpleExoPlayer player;
+    private ExoPlayer player;
     private Button button;
     private SeekBar seekBar;
     private PlayerTimer playerTimer;
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             InputStream is = getAssets().open("green_screen.mp4");
 
             // SimpleExoPlayer
-            player = new SimpleExoPlayer.Builder(this)
+            player = new ExoPlayer.Builder(this)
                     .setMediaSourceFactory(new ProgressiveMediaSource.Factory(dataSourceFactory))
                     .build();
             Uri firstVideoUri = Uri.parse("asset:///green_screen.mp4");
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUoGlPlayerView() {
         ePlayerView = new EPlayerView(this);
-        ePlayerView.setSimpleExoPlayer(player);
+        ePlayerView.setExoPlayer(player);
         ePlayerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         ((MovieWrapperView) findViewById(R.id.layout_movie_wrapper)).addView(ePlayerView);
         ePlayerView.onResume();

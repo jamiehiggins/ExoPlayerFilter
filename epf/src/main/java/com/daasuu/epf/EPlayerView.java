@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import com.daasuu.epf.chooser.EConfigChooser;
 import com.daasuu.epf.contextfactory.EContextFactory;
 import com.daasuu.epf.filter.GlFilter;
+import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.video.VideoSize;
@@ -22,7 +23,7 @@ public class EPlayerView extends GLSurfaceView implements Player.Listener {
     private final static String TAG = EPlayerView.class.getSimpleName();
 
     private final EPlayerRenderer renderer;
-    private SimpleExoPlayer player;
+    private ExoPlayer player;
 
     /* Video Aspect according to the video */
     private float measuredVideoAspect = 1f;
@@ -47,14 +48,14 @@ public class EPlayerView extends GLSurfaceView implements Player.Listener {
         setRenderer(renderer);
     }
 
-    public EPlayerView setSimpleExoPlayer(SimpleExoPlayer player) {
+    public EPlayerView setExoPlayer(ExoPlayer player) {
         if (this.player != null) {
             this.player.release();
             this.player = null;
         }
         this.player = player;
         this.player.addListener(this);
-        this.renderer.setSimpleExoPlayer(player);
+        this.renderer.setExoPlayer(player);
         return this;
     }
 
